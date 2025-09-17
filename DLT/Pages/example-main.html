@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLTransls</title>
+  <link rel="icon" type="image/png" href="../Designs/img/DLT.jpg"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Flowbite CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-blue-900 text-white p-4">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <nav class="space-x-4">
+        <a href="#" class="hover:text-gray-300">Inicio</a>
+        <a href="#" class="hover:text-gray-300">Servicios</a>
+        <a href="#" class="hover:text-gray-300">Contacto</a>
+      </nav>
+      <nav class="space-x-5">
+        <a href="#" class="hover:text-gray-300">Ingresar</a>
+        <a href="#" class="bg-white text-blue-900 px-4 py-2 rounded-lg hover:bg-gray-200">Rastrear Envío</a>
+        <img src="../Designs/img/pregunta.png" alt="soporte Logo" class="h-8 inline-block ml-4 rounded-full">
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-6xl mx-auto px-4 py-10">
+
+    <!-- Hero -->
+    <section class="text-center mb-12">
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">Bienvenido a DLTrans <br> Logística y Servicios</h2>
+      <p class="text-lg text-gray-600 mb-6">Traducciones profesionales y confiables para tu negocio.</p>
+      
+      <!-- Carrusel -->
+      <div id="indicators-carousel" class="relative w-full" data-carousel="static">
+        <!-- Carousel wrapper -->
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+            <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                <img src="../Designs/img/Brasil.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Imagen 1">
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="../Designs/img/Brasil.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Imagen 2">
+            </div>
+            <!-- Item 3 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="../Designs/img/Brasil.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Imagen 3">
+            </div>
+            <!-- Item 4 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="../Designs/img/Brasil.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Imagen 4">
+            </div>
+            <!-- Item 5 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="../Designs/img/Brasil.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Imagen 5">
+            </div>
+        </div>
+        <!-- Slider indicators -->
+        <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+        </div>
+        <!-- Slider controls -->
+        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white">
+                <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                </svg>
+                <span class="sr-only">Previous</span>
+            </span>
+        </button>
+        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white">
+                <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
+      </div>
+      
+      <a href="#servicios" class="bg-blue-900 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 mt-6 inline-block">Ver servicios</a>
+    </section>
+
+  <!-- Servicios -->
+    <section id="servicios" class="grid md:grid-cols-3 gap-6">
+    <!-- Card 1 -->
+    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition flex flex-col items-center text-center">
+        <div class="flex justify-center mb-4">
+        <img src="../Designs/img/paquete.jpg" alt="Paquetes" class="w-20 h-20 object-contain rounded-lg">
+        </div>
+        <h3 class="text-xl font-semibold">Paquetes</h3>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition flex flex-col items-center text-center">
+        <div class="flex justify-center mb-4">
+        <img src="../Designs/img/cargar.jpg" alt="Carga" class="w-20 h-20 object-contain rounded-lg">
+        </div>
+        <h3 class="text-xl font-semibold">Mercancía</h3>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition flex flex-col items-center text-center">
+        <div class="flex justify-center mb-4">
+        <img src="../Designs/img/carrito-de-compras.jpg" alt="E-Commerce" class="w-20 h-20 object-contain rounded-lg">
+        </div>
+        <h3 class="text-xl font-semibold">Logística E-Commerce</h3>
+    </div>
+    </section>
+
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white text-center py-4 mt-10">
+    <p>&copy; 2025 DLTransls - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Flowbite JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</body>
+</html>
