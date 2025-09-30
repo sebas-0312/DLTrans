@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DLTrans - Logística y Servicios</title>
+<!-- Ajuste mínimo: favicon corregido (ruta relativa igual que tus imágenes) -->
+<link rel="icon" href="../Designs/img/DLT.jpg" type="image/jpeg">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { margin:0; font-family:sans-serif; overflow:hidden; } /* scroll desactivado */
+
+  /* Secciones */
+  .section { display:none; opacity:0; transition: all 0.7s ease; width:100vw; height:100vh; position:relative; overflow:hidden; flex-direction:column; justify-content:center; align-items:center; }
+  .section.active { display:flex; opacity:1; }
+
+  /* Video de fondo */
+  .bg-video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0; pointer-events:none; }
+
+  /* Overlay para mejor visibilidad del contenido */
+  .overlay { position:absolute; inset:0; background:rgba(0,0,0,0.5); z-index:1; }
+
+  /* Texto sobre video */
+  .relative-z { position:relative; z-index:2; color:white; text-align:center; max-width:800px; }
+
+  /* Servicios */
+  .service-card { transform: translateY(20px); opacity:0; transition: all 0.6s ease; background:white; padding:1.5rem; border-radius:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.2); }
+  .service-card.show { transform:translateY(0); opacity:1; }
+
+  /* Footer */
+  footer { z-index:40; position:fixed; bottom:0; width:100%; background:#1e3a8a; color:#ccc; text-align:center; padding:1rem; display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+
+  /* Botón flotante */
+  #contactBtn { position:fixed; bottom:20px; right:20px; background:#1e40af; color:white; padding:0.75rem 1.5rem; border-radius:9999px; z-index:50; cursor:pointer; transition: transform 0.3s; }
+  #contactBtn:hover { transform:scale(1.1); }
+
+  /* Modal de contacto */
+  #contactModal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:60; }
+  #contactModal.active { display:flex; }
+  #contactModal .modal-content { background:white; border-radius:1rem; max-width:500px; width:90%; padding:2rem; position:relative; }
+  #contactModal .modal-content input, #contactModal .modal-content textarea { width:100%; border:1px solid #ccc; border-radius:0.5rem; padding:0.5rem; margin-top:0.5rem; }
+  #contactModal .modal-content button { background:#1e40af; color:white; padding:0.75rem; border-radius:0.5rem; width:100%; margin-top:1rem; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header" class="fixed top-0 w-full z-50 bg-blue-900 transition-colors duration-500 shadow-md">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    
+    <!-- Título principal como link -->
+    <h1>
+      <a href="#inicio" class="text-3xl md:text-4xl font-extrabold text-white hover:text-red-600 transition-colors duration-300">
+        DL Transporte, Logística y Servicios
+      </a>
+    </h1>
+
+    <nav class="hidden md:flex space-x-6">
+      <a href="#inicio" class="nav-link text-white hover:text-red-600">Inicio</a>
+      <a href="#nosotros" class="nav-link text-white hover:text-red-600">Nosotros</a>
+      <a href="#servicios" class="nav-link text-white hover:text-red-600">Servicios</a>
+    </nav>
+  </div>
+</header>
+
+
+
+<!-- INICIO -->
+<section id="inicio" class="section active relative overflow-hidden">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="../Designs/video/Video-de-DLTRANS-PORTADA.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+<!-- NOTA: Eliminé el bloque de script referido a openCotizarFloating que no existía en el HTML
+     (ese script generaba error en consola). -->
+
+<!-- Imágenes flotantes en el lado izquierdo -->
+<div class="absolute top-80 left-10 flex flex-col gap-6 z-20">
+  
+  <!-- Imagen para Servicios -->
+<!-- Imagen con mensaje flotante en hover -->
+<div class="relative group w-32 h-32">
+  <img src="../Designs/img/ubicacion.png" 
+       alt="Rastreo y Ubicación" 
+       class="w-32 h-32 rounded-lg shadow-lg cursor-pointer transition-transform duration-300 group-hover:scale-110">
+
+  <!-- Mensaje flotante -->
+  <div class="absolute top-0 left-full ml-3 w-64 bg-gradient-to-r from-blue-900 to-red-700 text-white text-sm p-3 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-300 z-50">
+    🚚 <span class="font-bold text-red-300">Rastreo Activo:</span><br>
+    Consulta la ubicación en tiempo real de tus vehículos y paquetes, con seguridad y confianza.
+  </div>
+</div>
+
+
+
+  
+<!-- Imagen para Quiénes Somos con carrusel flotante -->
+<div class="relative group w-24 h-24">
+  <img src="../Designs/img/cargar.jpg" 
+       alt="Quiénes Somos" 
+       class="w-24 h-24 rounded-lg shadow-lg cursor-pointer transition-transform duration-300 group-hover:scale-110">
+
+  <!-- Carrusel flotante -->
+  <div class="absolute top-0 left-full ml-3 w-72 bg-gradient-to-r from-blue-900 to-red-700 text-white rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-500 z-50 overflow-hidden">
+    
+    <!-- Contenedor del carrusel -->
+    <div class="flex animate-slide">
+      <!-- Imagen 1 -->
+      <div class="relative w-72 h-40 flex-shrink-0">
+        <img src="../Designs/img/formas de envio.jpg" class="w-72 h-40 object-cover" alt="Entrega 1">
+        <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-sm text-center py-1">Entregas seguras</div>
+      </div>
+      <!-- Imagen 2 -->
+      <div class="relative w-72 h-40 flex-shrink-0">
+        <img src="../Designs/img/montacarga.jpg" class="w-72 h-40 object-cover" alt="Entrega 2">
+        <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-sm text-center py-1">Cuidado especializado</div>
+      </div>
+      <!-- Imagen 3 -->
+      <div class="relative w-72 h-40 flex-shrink-0">
+        <img src="../Designs/img/satelital.jpg" class="w-72 h-40 object-cover" alt="Entrega 3">
+        <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-sm text-center py-1">Rastreo satelital</div>
+      </div>
+      <!-- Imagen 4 -->
+      <div class="relative w-72 h-40 flex-shrink-0">
+        <img src="../Designs/img/eecomerce.jpg" class="w-72 h-40 object-cover" alt="Entrega 4">
+        <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-sm text-center py-1">Soluciones e-commerce</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Animación del carrusel -->
+<style>
+  @keyframes slide {
+    0%   { transform: translateX(0%); }
+    25%  { transform: translateX(-100%); }
+    50%  { transform: translateX(-200%); }
+    75%  { transform: translateX(-300%); }
+    100% { transform: translateX(0%); }
+  }
+  .animate-slide {
+    display: flex;
+    width: 400%; /* 4 imágenes */
+    animation: slide 20s infinite; /* ajuste leve: 20s para percibir el movimiento */
+  }
+</style>
+
+
+  
+<!-- Imagen para Cotizar -->
+<a href="#" id="openCotizar" class="group">
+  <img src="../Designs/img/paquete.jpg" 
+       alt="Cotizar" 
+       class="w-28 h-28 rounded-lg shadow-lg cursor-pointer transition-transform duration-300 group-hover:scale-110">
+</a>
+
+<!-- Modal de Cotización -->
+<div id="cotizarModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-50 flex items-center justify-center">
+  <div class="bg-white rounded-xl shadow-lg w-full max-w-lg p-6 relative">
+    <!-- Botón Cerrar -->
+    <button id="closeCotizar" class="absolute top-3 right-3 text-red-600 text-2xl">&times;</button>
+
+    <h2 class="text-2xl font-bold text-blue-900 mb-4">Cotización de Envío</h2>
+
+    <form id="cotizarForm" class="space-y-4">
+      <!-- Ciudad de Origen -->
+      <div>
+        <label class="block font-semibold">Ciudad de Origen</label>
+        <input type="text" name="origen" required 
+               class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <!-- Ciudad de Destino -->
+      <div>
+        <label class="block font-semibold">Ciudad de Destino</label>
+        <input type="text" name="destino" required 
+               class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <!-- Tipo de Envío -->
+      <div>
+        <label class="block font-semibold">Tipo de Envío</label>
+        <select id="tipoEnvio" name="tipo" required 
+                class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+          <option value="">Seleccione...</option>
+          <option value="paqueteo">Paqueteo (x piezas hasta 10kg)</option>
+          <option value="paqueteria">Paquetería (10kg a 99kg)</option>
+          <option value="ecommerce">E-commerce (0 a 10kg, sin grandes volúmenes)</option>
+        </select>
+      </div>
+
+      <!-- Peso o Unidades -->
+      <div>
+        <label class="block font-semibold">Peso / Unidades</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" required 
+               class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+      </div>
+
+      <!-- Servicios adicionales -->
+      <div class="flex gap-4">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" name="servicio" value="terrestre"> 
+          Traslado Terrestre
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox" name="servicio" value="puerto"> 
+          Traslado en Puertos
+        </label>
+      </div>
+
+      <!-- Resultado -->
+      <div id="resultado" class="mt-4 p-3 bg-blue-100 text-blue-900 rounded-lg hidden"></div>
+
+      <!-- Botón Cotizar -->
+      <button type="submit" 
+              class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg">
+        Calcular Cotización
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  const openCotizar = document.getElementById("openCotizar");
+  const closeCotizar = document.getElementById("closeCotizar");
+  const cotizarModal = document.getElementById("cotizarModal");
+  const cotizarForm = document.getElementById("cotizarForm");
+  const resultado = document.getElementById("resultado");
+
+  // Abrir modal
+  if (openCotizar) {
+    openCotizar.addEventListener("click", e => {
+      e.preventDefault();
+      cotizarModal.classList.remove("hidden");
+    });
+  }
+
+  // Cerrar modal
+  if (closeCotizar) {
+    closeCotizar.addEventListener("click", () => {
+      cotizarModal.classList.add("hidden");
+    });
+  }
+
+  // Calcular cotización
+  if (cotizarForm) {
+    cotizarForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const tipo = document.getElementById("tipoEnvio").value;
+      const cantidad = parseInt(document.getElementById("cantidad").value);
+
+      let precio = 0;
+
+      if (tipo === "paqueteo") {
+        precio = cantidad * 5000; // ejemplo: $5.000 por pieza
+      } else if (tipo === "paqueteria") {
+        precio = cantidad * 800; // ejemplo: $800 por kilo
+      } else if (tipo === "ecommerce") {
+        precio = cantidad * 4000; // ejemplo: $4.000 por paquete pequeño
+      }
+
+      resultado.innerText = `Valor estimado: $${precio.toLocaleString("es-CO")}`;
+      resultado.classList.remove("hidden");
+    });
+  }
+</script>
+
+
+</div>
+
+
+</section>
+
+<style>
+  /* Animaciones personalizadas */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fadeIn { animation: fadeIn 1s ease forwards; }
+  .animate-fadeIn.delay-200 { animation-delay: 0.2s; }
+  .animate-fadeIn.delay-400 { animation-delay: 0.4s; }
+
+  @keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .animate-bounce-slow { animation: bounceSlow 4s infinite; }
+  .animate-bounce-slower { animation: bounceSlow 6s infinite; }
+  .animate-bounce { animation: bounceSlow 3s infinite; }
+</style>
+
+
+
+<!-- NOSOTROS -->
+<section id="nosotros" class="section">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="../Designs/video/Video-de-DLTRANS-PORTADA.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+  <div class="relative-z grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h2 class="text-3xl font-bold mb-6">Quiénes Somos</h2>
+      <p class="mb-4">DLTrans nació con la visión de revolucionar la logística en Colombia...</p>
+      <p class="mb-4">Nuestra misión: brindar soluciones logísticas eficientes...</p>
+      <p class="mb-4">Nuestra visión: ser líderes en logística innovadora...</p>
+      <p class="mb-4">Valores: compromiso, responsabilidad, seguridad y confianza.</p>
+    </div>
+    <div class="bg-white/20 p-4 rounded-xl">
+      <p>Video adicional o presentación de la empresa aquí si deseas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS PROFESIONALES -->
+<section id="servicios" class="section relative bg-gray-50">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="../Designs/video/Video-de-DLTRANS-PORTADA.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <div class="relative-z max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
+    
+    <!-- Menú lateral -->
+    <aside class="bg-white rounded-xl shadow-md p-6 md:col-span-1 border border-gray-200">
+      <h2 class="text-2xl font-bold text-blue-900 mb-6">Nuestros Servicios</h2>
+      <ul id="servicesMenu" class="space-y-3 text-sm">
+        <!-- Categoría Ecommerce -->
+        <li class="uppercase text-xs text-gray-500 font-semibold mt-4">E-commerce</li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="productos">Gestión de productos</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="ordenes">Gestión de órdenes</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="paquete">Paquete inteligente</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="reglas">Reglas de envío</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="tarifas">Tarifas de envío</button></li>
+
+        <!-- Categoría Envíos -->
+        <li class="uppercase text-xs text-gray-500 font-semibold mt-6">Envíos</li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="masivos">Envíos masivos</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="rastreo">Rastreo</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="reportes">Reportes de entregas</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="impresion">Opciones de impresión</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="notificaciones">Notificaciones</button></li>
+
+        <!-- Categoría Empresa -->
+        <li class="uppercase text-xs text-gray-500 font-semibold mt-6">Empresa</li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="dashboard">Dashboard & analítica</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="direcciones">Direcciones y paquetes</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="usuarios">Usuarios y roles</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="soporte">Atención al cliente</button></li>
+        <li><button class="service-btn w-full text-left px-2 py-1 hover:text-red-600" data-service="pagos">Pagos automáticos</button></li>
+      </ul>
+    </aside>
+
+    <!-- Panel de detalle -->
+    <div id="serviceDetail" class="bg-white rounded-xl shadow-lg p-10 md:col-span-3 border border-gray-200 flex flex-col items-center justify-center text-center min-h-[350px] transition-all duration-500">
+      <img src="Designs/icons/info.svg" alt="Servicios DLTrans" class="w-20 h-20 mb-6 opacity-40">
+      <h3 class="text-2xl font-bold text-blue-900 mb-4">Selecciona un servicio</h3>
+      <p class="text-gray-600 max-w-lg">Explora nuestras soluciones en logística, transporte y tecnología. Haz clic en el menú para ver más información.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Script dinámico -->
+<script>
+  const serviceDetail = document.getElementById("serviceDetail");
+
+  const servicesInfo = {
+    productos: {
+      title: "Gestión de productos",
+      desc: "Administra dimensiones, peso, códigos HS y más de tus productos.",
+      icon: "Designs/icons/productos.png"
+    },
+    ordenes: {
+      title: "Gestión de órdenes",
+      desc: "Crea guías masivas y aplica filtros avanzados para tus envíos.",
+      icon: "Designs/icons/ordenes.png"
+    },
+    paquete: {
+      title: "Paquete inteligente",
+      desc: "Optimiza la asignación de paquetes con inteligencia artificial.",
+      icon: "Designs/icons/paquete.png"
+    },
+    reglas: {
+      title: "Reglas de envío",
+      desc: "Crea reglas automáticas para generar guías sin esfuerzo.",
+      icon: "Designs/icons/reglas.png"
+    },
+    tarifas: {
+      title: "Tarifas de envío",
+      desc: "Consulta tarifas reales y muéstralas en tu checkout.",
+      icon: "Designs/icons/tarifas.png"
+    },
+    masivos: {
+      title: "Envíos masivos",
+      desc: "Genera guías rápidamente con archivos CSV.",
+      icon: "Designs/icons/envios.png"
+    },
+    rastreo: {
+      title: "Rastreo",
+      desc: "Obtén estatus de envío en tiempo real con total transparencia.",
+      icon: "Designs/icons/rastreo.png"
+    },
+    reportes: {
+      title: "Reportes de entregas",
+      desc: "Analiza entregas fallidas y toma mejores decisiones.",
+      icon: "Designs/icons/reportes.png"
+    },
+    impresion: {
+      title: "Opciones de impresión",
+      desc: "Exporta guías en PDF, ZPL, ELD y más, 24/7.",
+      icon: "Designs/icons/impresion.png"
+    },
+    notificaciones: {
+      title: "Notificaciones",
+      desc: "Envía alertas por correo, mensajería y WhatsApp.",
+      icon: "Designs/icons/notificaciones.png"
+    },
+    dashboard: {
+      title: "Dashboard & analítica",
+      desc: "Monitorea todos tus envíos en tiempo real.",
+      icon: "Designs/icons/dashboard.png"
+    },
+    direcciones: {
+      title: "Direcciones y paquetes",
+      desc: "Centraliza toda tu información en un único lugar.",
+      icon: "Designs/icons/direcciones.png"
+    },
+    usuarios: {
+      title: "Usuarios y roles",
+      desc: "Gestiona el acceso de tu equipo fácilmente.",
+      icon: "Designs/icons/usuarios.png"
+    },
+    soporte: {
+      title: "Atención al cliente",
+      desc: "Centro de soporte para resolver tus dudas rápidamente.",
+      icon: "Designs/icons/soporte.png"
+    },
+    pagos: {
+      title: "Pagos automáticos",
+      desc: "Automatiza la gestión de pagos y facturación.",
+      icon: "Designs/icons/pagos.png"
+    }
+  };
+
+  document.querySelectorAll(".service-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const key = btn.dataset.service;
+      const service = servicesInfo[key];
+      serviceDetail.innerHTML = `
+        <div class="text-center animate-fadeIn">
+          <img src="${service.icon}" alt="${service.title}" class="w-24 h-24 mx-auto mb-6">
+          <h3 class="text-2xl font-bold text-blue-900 mb-3">${service.title}</h3>
+          <p class="text-gray-600 max-w-xl mx-auto">${service.desc}</p>
+        </div>
+      `;
+    });
+  });
+</script>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn { animation: fadeIn 0.5s ease-out; }
+</style>
+
+
+<!-- Script Partners -->
+<script>
+  const openPartnersForm = document.getElementById("openPartnersForm");
+  const closePartnersForm = document.getElementById("closePartnersForm");
+  const partnersModal = document.getElementById("partnersModal");
+  const partnersForm = document.getElementById("partnersForm");
+
+  // Ajuste mínimo: solo añadir listeners si los elementos existen (evita errores en consola)
+  if (openPartnersForm && closePartnersForm && partnersModal && partnersForm) {
+    openPartnersForm.addEventListener("click", () => partnersModal.classList.remove("hidden"));
+    closePartnersForm.addEventListener("click", () => partnersModal.classList.add("hidden"));
+    partnersModal.addEventListener("click", e => { if(e.target === partnersModal) partnersModal.classList.add("hidden"); });
+
+    partnersForm.addEventListener("submit", e => {
+      e.preventDefault();
+      alert("¡Gracias por registrarte como Partner DLTrans! Nos pondremos en contacto pronto.");
+      partnersForm.reset();
+      partnersModal.classList.add("hidden");
+    });
+  }
+</script>
+
+
+<!-- Footer Profesional con nombres de redes -->
+<footer class="bg-blue-900 text-gray-100 w-full py-8 mt-auto">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col gap-6">
+
+    <!-- Eslogan motivador -->
+    <p class="text-center text-lg md:text-xl font-semibold text-red-500 italic">
+      "En DLTrans transportamos más que mercancía, transportamos sueños."
+    </p>
+
+    <!-- Contacto rápido con nombres -->
+    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+      <a href="https://wa.me/573171698839" target="_blank" class="flex items-center gap-2 hover:text-green-400">
+        <!-- WhatsApp Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0C5.372 0 0 5.373 0 12c0 2.116.553 4.093 1.517 5.84L0 24l6.39-1.486A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm-.005 21.818c-2.091 0-4.045-.634-5.673-1.708l-.405-.252-3.796.882.91-3.695-.263-.42A9.81 9.81 0 012.182 12c0-5.404 4.398-9.802 9.823-9.802 5.425 0 9.823 4.398 9.823 9.823 0 5.425-4.398 9.823-9.825 9.823zm5.378-7.027c-.297-.148-1.754-.867-2.025-.967-.271-.099-.468-.148-.666.148-.198.297-.765.967-.936 1.164-.172.198-.345.222-.642.074-.297-.148-1.254-.462-2.39-1.48-.883-.787-1.48-1.756-1.653-2.053-.172-.297-.018-.458.13-.606.134-.134.297-.345.446-.518.149-.173.198-.296.298-.495.099-.198.05-.371-.025-.519-.074-.148-.666-1.606-.912-2.196-.24-.576-.483-.498-.666-.507-.171-.008-.37-.01-.567-.01-.198 0-.519.074-.792.371s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.148.198 2.095 3.2 5.077 4.487.709.306 1.26.489 1.69.626.711.227 1.356.195 1.868.118.571-.085 1.754-.718 2.002-1.411.248-.693.248-1.289.173-1.411-.074-.122-.271-.198-.568-.346z"/>
+        </svg>
+        WhatsApp
+      </a>
+
+      <a href="mailto:soporte@dltrans.com" class="flex items-center gap-2 hover:text-yellow-400">
+        <!-- Email Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 12.713l11.985-8.713H.015L12 12.713zm0 2.574L0 6v12h24V6L12 15.287z"/>
+        </svg>
+        Correo
+      </a>
+
+      <a href="https://www.facebook.com/dltrans.logistica" target="_blank" class="flex items-center gap-2 hover:text-blue-400">
+        <!-- Facebook Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.407.592 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.796.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.31h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.325C24 .592 23.407 0 22.675 0z"/>
+        </svg>
+        Facebook
+      </a>
+
+      <a href="https://instagram.com/DLTrans" target="_blank" class="flex items-center gap-2 hover:text-pink-400">
+        <!-- Instagram Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.78.128 4.603.443 3.635 1.41c-.968.968-1.282 2.145-1.34 3.417C2.012 6.332 2 6.741 2 12s.012 5.668.07 6.948c.058 1.272.372 2.449 1.34 3.417.968.968 2.145 1.282 3.417 1.34 1.28.058 1.689.07 6.948.07s5.668-.012 6.948-.07c1.272-.058 2.449-.372 3.417-1.34.968-.968 1.282-2.145 1.34-3.417.058-1.28.07-1.689.07-6.948s-.012-5.668-.07-6.948c-.058-1.272-.372-2.449-1.34-3.417-.968-.968-2.145-1.282-3.417-1.34C17.668.012 17.259 0 12 0z"/>
+          <path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998z"/>
+          <circle cx="18.406" cy="5.594" r="1.44"/>
+        </svg>
+        Instagram
+      </a>
+    </div>
+
+    <!-- Botón para abrir Términos y Condiciones --> <button id="termsBtn" class="text-sm text-gray-600 hover:text-gray-900">Términos y Condiciones</button> <!-- Modal Términos y Condiciones --> <div id="termsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start pt-24 z-70 overflow-y-auto"> <div class="w-11/12 max-w-3xl p-6 relative text-gray-100"> <button id="closeTerms" class="absolute top-4 right-4 text-gray-300 hover:text-white text-xl font-bold">&times;</button> <h2 class="text-2xl font-bold mb-4 text-white">Términos y Condiciones</h2> <div class="space-y-4 text-sm"> <p><strong>1. Información General</strong><br> DLTrans conecta personas y negocios en todo Colombia, transportando sueños, oportunidades y crecimiento. Al usar nuestros servicios, aceptas estos términos.</p> <p><strong>2. Uso de los Servicios</strong><br> Los servicios se prestan para transporte de oportunidades y apoyo a emprendimientos. No nos hacemos responsables por paquetes físicos prohibidos o ilegales.</p> <p><strong>3. Registro y Seguridad</strong><br> Proporciona información correcta al registrarte. DLTrans puede suspender o cancelar cuentas por uso indebido.</p> <p><strong>4. Responsabilidad</strong><br> Brindamos soluciones confiables, rápidas y seguras, pero no garantizamos resultados comerciales o personales. No somos responsables por pérdidas indirectas o decisiones de los usuarios.</p> <p><strong>5. Propiedad Intelectual</strong><br> Todo el contenido de DLTrans (textos, imágenes, videos, diseño web) es propiedad de la empresa. Queda prohibida la reproducción sin autorización.</p> <p><strong>6. Privacidad</strong><br> Los datos de los usuarios se usan solo para gestionar servicios y contacto comercial. Consulta nuestra Política de Privacidad.</p> <p><strong>7. Modificaciones</strong><br> DLTrans puede actualizar estos Términos en cualquier momento. El uso continuado implica aceptación de cambios.</p> <p><strong>8. Contacto</strong><br> 📧 soporte@dltrans.com<br> 📱 WhatsApp: +57 317 169 8839</p> </div> </div> </div>
+  </div>
+</footer>
+
+<script>
+  const termsBtn = document.getElementById("termsBtn");
+  const termsModal = document.getElementById("termsModal");
+  const closeTerms = document.getElementById("closeTerms");
+
+  // Abrir modal
+  termsBtn.addEventListener("click", () => termsModal.classList.remove("hidden"));
+
+  // Cerrar modal con botón
+  closeTerms.addEventListener("click", () => termsModal.classList.add("hidden"));
+
+  // Cerrar modal clicando fuera
+  termsModal.addEventListener("click", e => {
+    if(e.target === termsModal) termsModal.classList.add("hidden");
+  });
+</script>
+
+<!-- Botón flotante -->
+<img id="contactBtn" 
+     src="../Designs/img/contactanos.gif" 
+     alt="Contáctanos" 
+     style="height:120px; width:auto; border:3px solid rgb(220, 21, 21);">
+
+<!-- Modal de contacto -->
+<div id="contactModal">
+  <div class="modal-content">
+    <button id="closeModal">&times;</button>
+    <h2>Contáctanos</h2>
+    <form id="contactForm">
+      <input type="text" name="nombre" placeholder="Nombre completo" required>
+      <input type="email" name="correo" placeholder="Correo electrónico" required>
+      <input type="tel" name="celular" placeholder="Celular" required>
+      <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const links = document.querySelectorAll(".nav-link");
+  const sections = document.querySelectorAll(".section");
+
+  function showSection(id){
+    sections.forEach(sec=>sec.classList.remove("active"));
+    const target = document.getElementById(id);
+    target.classList.add("active");
+
+    // Animación servicios
+    if(id==="servicios"){
+      const cards = target.querySelectorAll(".service-card");
+      cards.forEach((c,i)=>setTimeout(()=>c.classList.add("show"), i*150));
+    }
+  }
+
+  links.forEach(link=>{
+    link.addEventListener("click", e=>{
+      e.preventDefault();
+      showSection(link.getAttribute("href").replace("#",""));
+    });
+  });
+
+  document.querySelectorAll("button[data-target]").forEach(btn=>{
+    btn.addEventListener("click", ()=> showSection(btn.getAttribute("data-target")));
+  });
+
+  showSection("inicio");
+
+  // Modal contacto
+  const contactBtn=document.getElementById("contactBtn");
+  const contactModal=document.getElementById("contactModal");
+  const closeModal=document.getElementById("closeModal");
+  const contactForm=document.getElementById("contactForm");
+
+  contactBtn.addEventListener("click", ()=> contactModal.classList.add("active"));
+  closeModal.addEventListener("click", ()=> contactModal.classList.remove("active"));
+  contactModal.addEventListener("click", e=> { if(e.target===contactModal) contactModal.classList.remove("active"); });
+  contactForm.addEventListener("submit", e=>{ e.preventDefault(); alert("¡Gracias! Nos pondremos en contacto contigo pronto."); contactModal.classList.remove("active"); contactForm.reset(); });
+</script>
+</body>
+</html>
