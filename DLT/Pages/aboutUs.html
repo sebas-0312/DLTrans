@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLTrans Logística</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <header id="header" class="fixed top-0 w-full z-50 bg-gradient-to-r from-blue-900 to-blue-800 shadow-xl transition-all duration-500">
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-5">
+            <h1>
+                <a href="../Pages/index.html" class="text-3xl md:text-4xl font-extrabold text-white hover:text-red-400 transition-colors duration-300 tracking-tight">
+                    DLTrans Logística
+                </a>
+            </h1>
+            <nav class="hidden md:flex space-x-10">
+                <a href="../Pages/index.html#inicio" class="nav-link text-lg text-white hover:text-red-400 font-semibold transition-colors duration-300 hover:scale-105">Inicio</a>
+                <a href="../Pages/aboutUs.html" class="nav-link text-lg text-white hover:text-red-400 font-semibold transition-colors duration-300 hover:scale-105">Nosotros</a>
+                <a href="../Pages/services.html" class="nav-link text-lg text-white hover:text-red-400 font-semibold transition-colors duration-300 hover:scale-105">Servicios</a>
+            </nav>
+            <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none hover:bg-blue-700 p-2 rounded-lg transition-colors duration-200">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-blue-900 shadow-lg">
+            <a href="../Pages/index.html#inicio" class="nav-link block px-6 py-3 text-lg text-white hover:bg-blue-700 hover:text-red-400 font-medium transition-all duration-300">Inicio</a>
+            <a href="../Pages/aboutUs.html" class="nav-link block px-6 py-3 text-lg text-white hover:bg-blue-700 hover:text-red-400 font-medium transition-all duration-300">Nosotros</a>
+            <a href="../Pages/services.html" class="nav-link block px-6 py-3 text-lg text-white hover:bg-blue-700 hover:text-red-400 font-medium transition-all duration-300">Servicios</a>
+        </div>
+    </header>
+
+    <section id="nosotros" class="section relative min-h-screen bg-gray-900 pt-20">
+        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover opacity-70">
+            <source src="../Designs/video/Video-de-DLTRANS-PORTADA.mp4" type="video/mp4">
+        </video>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-900/50 to-black/70"></div>
+        <div class="relative max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+            <div class="text-white">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-8 tracking-tight">Quiénes Somos</h2>
+                <p class="mb-6 text-lg leading-relaxed">DLTrans nació con la visión de revolucionar la logística en Colombia, transformando la manera en que las empresas gestionan sus envíos con tecnología de punta.</p>
+                <p class="mb-6 text-lg leading-relaxed">Nuestra misión: brindar soluciones logísticas eficientes, personalizadas y confiables que impulsen el crecimiento de nuestros clientes.</p>
+                <p class="mb-6 text-lg leading-relaxed">Nuestra visión: ser líderes en logística innovadora, marcando la pauta en sostenibilidad y excelencia operativa en toda la región.</p>
+                <p class="mb-6 text-lg leading-relaxed font-semibold">Valores: compromiso, responsabilidad, seguridad y confianza.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
+                <p class="text-white text-lg leading-relaxed">Explora nuestra historia y compromiso a través de un video adicional o una presentación interactiva de la empresa.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gradient-to-r from-blue-900 to-blue-800 text-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col gap-10">
+            <p class="text-center text-xl md:text-2xl font-bold text-red-400 italic tracking-wide">
+                "En DLTrans transportamos más que mercancía, transportamos sueños."
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                <a href="https://wa.me/573171698839" target="_blank" class="flex items-center gap-3 text-lg hover:text-green-300 font-medium transition-colors duration-300 hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C5.372 0 0 5.373 0 12c0 2.116.553 4.093 1.517 5.84L0 24l6.39-1.486A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm-.005 21.818c-2.091 0-4.045-.634-5.673-1.708l-.405-.252-3.796.882.91-3.695-.263-.42A9.81 9.81 0 012.182 12c0-5.404 4.398-9.802 9.823-9.802 5.425 0 9.823 4.398 9.823 9.823 0 5.425-4.398 9.823-9.825 9.823zm5.378-7.027c-.297-.148-1.754-.867-2.025-.967-.271-.099-.468-.148-.666.148-.198.297-.765.967-.936 1.164-.172.198-.345.222-.642.074-.297-.148-1.254-.462-2.39-1.48-.883-.787-1.48-1.756-1.653-2.053-.172-.297-.018-.458.13-.606.134-.134.297-.345.446-.518.149-.173.198-.296.298-.495.099-.198.05-.371-.025-.519-.074-.148-.666-1.606-.912-2.196-.24-.576-.483-.498-.666-.507-.171-.008-.37-.01-.567-.01-.198 0-.519.074-.792.371s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.148.198 2.095 3.2 5.077 4.487.709.306 1.26.489 1.69.626.711.227 1.356.195 1.868.118.571-.085 1.754-.718 2.002-1.411.248-.693.248-1.289.173-1.411-.074-.122-.271-.198-.568-.346z"/>
+                    </svg>
+                    WhatsApp
+                </a>
+                <a href="mailto:soporte@dltrans.com" class="flex items-center gap-3 text-lg hover:text-yellow-300 font-medium transition-colors duration-300 hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12.713l11.985-8.713H.015L12 12.713zm0 2.574L0 6v12h24V6L12 15.287z"/>
+                    </svg>
+                    Correo
+                </a>
+                <a href="https://www.facebook.com/dltrans.logistica" target="_blank" class="flex items-center gap-3 text-lg hover:text-blue-300 font-medium transition-colors duration-300 hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.407.592 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.796.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.31h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.325C24 .592 23.407 0 22.675 0z"/>
+                    </svg>
+                    Facebook
+                </a>
+                <a href="https://instagram.com/DLTrans" target="_blank" class="flex items-center gap-3 text-lg hover:text-pink-300 font-medium transition-colors duration-300 hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.78.128 4.603.443 3.635 1.41c-.968.968-1.282 2.145-1.34 3.417C2.012 6.332 2 6.741 2 12s.012 5.668.07 6.948c.058 1.272.372 2.449 1.34 3.417.968.968 2.145 1.282 3.417 1.34 1.28.058 1.689.07 6.948.07s5.668-.012 6.948-.07c1.272-.058 2.449-.372 3.417-1.34.968-.968 1.282-2.145 1.34-3.417.058-1.28.07-1.689.07-6.948s-.012-5.668-.07-6.948c-.058-1.272-.372-2.449-1.34-3.417-.968-.968-2.145-1.282-3.417-1.34C17.668.012 17.259 0 12 0z"/>
+                        <path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998z"/>
+                        <circle cx="18.406" cy="5.594" r="1.44"/>
+                    </svg>
+                    Instagram
+                </a>
+            </div>
+            <button id="termsBtn" class="text-sm text-gray-300 hover:text-white font-medium transition-colors duration-300 hover:underline">Términos y Condiciones</button>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
